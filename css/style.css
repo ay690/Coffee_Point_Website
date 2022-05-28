@@ -31,6 +31,20 @@ body{
 
 /* end of global style  */
 
+/* preloader  */
+  .preloader{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--brightYellow);
+      z-index: 999;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+  }
+
  /* header  */
  .header{
     height: 100vh;
@@ -123,7 +137,7 @@ body{
    animation-iteration-count: infinite;
  }
 
- /* nav animations  */
+ /* nav btn animations  */
  @keyframes pulse {
      0%{
       transform: scale(1);
@@ -135,5 +149,89 @@ body{
 
     100%{
        transform: scale(1);  
+    }
+}
+
+ /* nav  */
+ .nav{
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100%;
+     /* width: 10rem; */
+     background-color: rgba(242, 180, 80, 0.9);
+     z-index: 3;
+ }
+
+ .nav__links{
+   list-style-type: none;
+
+ }
+
+ .nav__single-link{
+    display: block; 
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--brown);
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    transition: all 0.5s ease-in-out;
+ }
+
+ .nav__single-link:hover{
+    background: var(--brown);
+    color: rgba(242, 180, 80, 1);
+    padding-left: 1.5rem;
+
+ }
+
+ .nav__logo:hover{
+    background-color: gray;
+ }
+
+ .nav{
+     width: 0;
+     overflow: hidden;
+     transition: all 0.5s linear;
+ }
+
+ .nav--show{
+     width: 10rem;
+ }
+
+ /* video switch container  */
+ .video__switch-container{
+    display: none; 
+ }
+
+ @media screen and (min-width: 768px){
+    .video__switch-container{
+        display: block;
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        z-index: 3;
+    }
+
+    .video__switch{
+        position: relative;
+        width: 5rem;
+        background-color: var(--yellow);
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.25rem;
+        cursor: pointer;
+        border-radius: 00.5rem;
+    }
+
+    .video__switch-btn{
+     position: absolute;
+     top: 0;
+     left: 0;
+     background: var(--brown);
+     height: 100%;
+     width: 50%;
+     border-radius: 0.5rem;
     }
  }
