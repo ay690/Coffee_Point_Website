@@ -59,7 +59,7 @@ UI.prototype.showNav = function(){
   document.querySelector(".nav").classList.toggle("nav--show");
 }
 
-//controling the video
+//controlling the video
 UI.prototype.videoControls = function(){
  let btn = document.querySelector(".video__switch-btn");
  if(!btn.classList.contains("btnSlide")){
