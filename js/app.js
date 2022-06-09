@@ -6,16 +6,47 @@
 
 eventListner();
 function eventListner(){
+    const ui = new UI(); 
+
     window.addEventListener("load", function(){
-        let preload = this.document.querySelector(".preloader");
-        preload.style.display = "none";
+       ui.hidePreloader(); 
     })
     
     //nav btn
     document.querySelector(".navBtn").addEventListener("click", function(){
-        document.querySelector(".nav").classList.toggle("nav--show");
+        ui.showNav();
+    })
+
+    //control the video
+    document.querySelector(".video__switch").addEventListener("click", function(){
+        ui.videoControls();
     })
 }
 
-//Mkaing UI next time
+//Constructor function
+function UI(){
+ 
+}
+
+//for hiding preloader
+UI.prototype.hidePreloader = function(){
+  document.querySelector(".preloader").style.display = "none";
+}
+
+//showcasing the nav-bar
+UI.prototype.showNav = function(){
+  document.querySelector(".nav").classList.toggle("nav--show");
+}
+
+//controling the video
+UI.prototype.videoControls = function(){
+ let btn = document.querySelector(".video__switch-btn");
+ if(!btn.classList.contains("btnSlide")){
+    btn.classList.add("btnSlide");
+    document.querySelector(".video__item").pause();
+ }else{
+    btn.classList.remove("btnSlide");
+    document.querySelector(".video__item").play();
+ }
+}
 
