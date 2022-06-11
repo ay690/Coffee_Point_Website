@@ -42,7 +42,27 @@ function eventListner(){
       ui.showFeedback("Some form values are empty", "error");
     }
   })
+
+  //Modal display ui -> object
+   const links = document.querySelectorAll(".work-item__icon");
+   
+   links.forEach(function(item){
+     item.addEventListener("click", function(event){
+      ui.showModal(event);
+
+     })
+   })
+
+  //Hide Modal
+  document.querySelector(".work-modal__close").addEventListener("click", function(){
+    ui.hideModal();
+  })
+   
 }
+
+
+
+
 
 //Constructor function
 function UI(){
@@ -123,6 +143,28 @@ UI.prototype.clearFields = function(){
     document.querySelector(".input-email").value = '';
 }
 
+//show modal
+UI.prototype.showModal = function(event){
+   event.preventDefault();
+  //This is done to find the PARENT OF FONT AWESOME ICON (SEARCH icon)
+  //console.log(event.target.parentElement); 
+
+  if(event.target.parentElement.classList.contains("work-item__icon")){
+    //alert("hello");
+    let id = event.target.parentElement.dataset.id;
+    //console.log(id);
+    const modal = document.querySelector(".work-modal");
+    const modalItem = document.querySelector(".work-modal__item");
+    modal.classList.add("work-modal--show");
+    modalItem.style.backgroundImage = `url(img/work-${id}.jpeg)`;
+  }
+}
+
+//Hide Modal
+UI.prototype.hideModal = function(){
+  document.querySelector(".work-modal").classList.remove("work-modal--show");
+}
+
 
 
 function Customer(name, lastName, email){
@@ -131,6 +173,6 @@ function Customer(name, lastName, email){
   this.email = email;
 }
 
-//Work section untill next time
+
 
 
